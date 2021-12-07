@@ -1,0 +1,7 @@
+
+<div class="content">
+    <input class="input-block" #lettres (keyup)="0">
+    <h3 [ngClass]="lettres.value.length > 15 ? 'trop' : 'parfait'">{{lettres.value.length}}</h3>
+</div>
+    
+

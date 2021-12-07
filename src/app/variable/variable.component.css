@@ -1,0 +1,13 @@
+.trop {
+    color: red;
+}
+.parfait {
+    color: green;
+}
+.center-content{
+    display: flex;
+    justify-content: center;
+}
+.content {
+    margin: 20px;
+}

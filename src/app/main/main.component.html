@@ -1,0 +1,34 @@
+<h2>{{title}}</h2>
+<div class="center-content">
+    <table>
+        <thead>  
+            <th [ngStyle]="background">nom</th>
+            <th [ngStyle]="background">poste</th>
+            <th [ngStyle]="background">date candidature</th>
+            <th [ngStyle]="background">date reponse</th>
+            <th [ngStyle]="background">Commentaire</th>
+            <th [ngStyle]="background">Lien</th>
+            <th [ngStyle]="background"></th>
+        </thead>
+        <tr *ngFor = "let candidature of candidatures">
+            <td>{{ candidature.nom }}</td>
+            <td>{{ candidature.poste }}</td>
+            <td>{{ candidature.dateCandidature }}</td>
+            <td *ngIf = "candidature.dateReponse; then reponse; else nonReponse"></td>
+            <td>{{ candidature.observation }}</td>
+            <td><a *ngIf = "candidature.lien" href="{{ candidature.lien }}">lien offre</a></td>
+            <ng-template #nonReponse>
+                <p class="margin-td">Pas encore</p>
+            </ng-template>
+            <ng-template #reponse>
+                <p class="margin-td red">{{candidature.dateReponse}}</p>
+            </ng-template>
+            <td [ngSwitch]="candidature.finish">
+                <p *ngSwitchCase="'false'"><mat-icon>thumb_down</mat-icon></p> 
+                <p *ngSwitchCase="'true'"><mat-icon>thumb_up</mat-icon></p> 
+                <p *ngSwitchCase="'waiting'"><mat-icon>alarm</mat-icon></p>
+            </td>
+        </tr>
+      </table>
+</div>
+
